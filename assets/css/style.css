@@ -85,12 +85,12 @@ body {
 }
 .Content {
   position: fixed;
-  z-index: 1;
+  z-index: -1;
   left: var(--pad);
   right: var(--pad);
   top: var(--pad);
   bottom: var(--pad);
-  pointer-events: none;
+  /* pointer-events: none; */
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.5);
   padding: clamp(20px, 2%, 2%);
@@ -152,11 +152,9 @@ body {
   transition-duration: 0.4s;
   transition-timing-function: cubic-bezier(0.1, 0.4, 0.2, 1);
 }
-/* .page {
-  display: block;
-  width: 100%;
-  min-height: calc(var(--vh, 1vh) * 100);
-} */
+.siteHeader_nav ol li ._text:hover {
+  opacity: 0.25;
+}
 .page_content {
   position: absolute;
   right: calc(var(--pad));
