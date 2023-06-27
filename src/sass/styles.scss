@@ -186,6 +186,15 @@ body {
 				}
 			}
 		}
+		li.selected {
+			pointer-events: none;
+			._dot {
+				opacity: 1;
+			}
+			._text {
+				opacity: 0;
+			}
+		}
 	}
 }
 .page_content {
