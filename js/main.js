@@ -53,8 +53,9 @@ function updateView() {
 }
 function updatePage(event) {
   event.preventDefault();
+  document.querySelector(".selected").classList.remove("selected");
+  event.target.parentElement.classList.add("selected");
   window.history.pushState(null, "", event.target.href);
-  //   console.log("window.location.pathname: ", window.location.pathname);
   pagePaths.includes(window.location.pathname) ? switchPage(window.location.pathname) : switchPage("/");
 }
 function switchPage(path) {
