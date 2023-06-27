@@ -49,12 +49,12 @@ ul {
 @font-face {
   font-family: "Ubuntu";
   font-weight: 200;
-  src: url("/assets/font/Ubuntu-Bold.ttf") format("ttf");
+  src: url("../font/Ubuntu-Bold.ttf") format("ttf");
 }
 @font-face {
   font-family: "Raleway";
   font-weight: 400;
-  src: url("/assets/font/Raleway-VariableFont_wght.ttf") format("ttf");
+  src: url("../font/Raleway-VariableFont_wght.ttf") format("ttf");
 }
 html,
 body {
