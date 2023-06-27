@@ -78,6 +78,15 @@ module.exports = {
           },
         ],
       },
+      {
+        // Apply rule for fonts files
+        test: /\.(jpeg|jpg|png|gif|svg)$/i,
+        loader: "file-loader",
+        options: {
+          // outputPath: "fonts",
+          name: "images/[name].[ext]",
+        },
+      },
     ],
   },
   plugins: [

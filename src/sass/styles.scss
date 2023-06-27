@@ -92,6 +92,9 @@ ul {
 	--c-bg: hsl(0, 0%, 5%);
 	--c-text: hsl(0, 0%, 95%);
 	--pad: max(20px, 4vmin);
+	--bg-color: hsla(207, 90%, 54%, 0.30);
+	--border-color: hsla(192, 70%, 43%, 0.70);
+	// --bg-color: hsla(221, 51%, 16%, 0.70);
 }
 body {
 	height: 100%;
@@ -125,9 +128,67 @@ body {
 	top: var(--pad);
 	bottom: var(--pad);
 	overflow: hidden;
-	border: 1px solid rgba(255, 255, 255, 0.5);
+	// border: 1px solid rgba(255, 255, 255, 0.5);
+	border: 1.5px solid var(--border-color);
+	outline: 1px solid var(--border-color);
+  	outline-offset:-10px;   
 	padding: clamp(20px, 2%, 2%);
 }
+.screen {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	// background-color: var(--bg-color);
+}
+.screen-overlay {
+	background: linear-gradient(
+		var(--bg-color),
+		var(--bg-color) 2px,
+    transparent 2px,
+    transparent 10px
+  	);
+	background-size: 100% 9px;
+	height: 100%;
+	width: 100%;
+	animation: pan-overlay 22s infinite linear;
+	position: absolute;
+	z-index: 2;
+	left: 0px;
+	top: 0px;
+}
+@keyframes pan-overlay {
+	from {
+		background-position: 0%	0%;
+	}
+	to {
+		background-position: 0%	-100%;
+	}
+}
+
+.screen-bg > img {
+	opacity: 50%;
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+
+.screen > .screen-bg {
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	z-index: 1;
+	left: 0px;
+	top: 0px;
+	background-size: 100%;
+	background-position: 0% 0%;
+	filter: sepia(100%) hue-rotate(130deg);
+	opacity: 0.6;
+	// animation: pan-image 15s linear infinite;
+}
+
+
 .icon_links {
 	position: fixed;
 	z-index: 10;
@@ -136,7 +197,7 @@ body {
 	transform-origin: right bottom;
 	transform: rotate(90deg);
 	white-space: nowrap;
-	mix-blend-mode: difference;
+	// mix-blend-mode: difference;
 	display: flex;
 	column-gap: 15px;
 	cursor: pointer;
@@ -146,7 +207,7 @@ body {
 	z-index: 10;
 	left: calc(var(--pad) * 2);
 	top: calc(var(--pad) * 2);
-	mix-blend-mode: difference;
+	// mix-blend-mode: difference;
 }
 .siteHeader_title {
 	margin: -0.1em 0 0 -0.04em;
