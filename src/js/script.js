@@ -2,8 +2,7 @@ import { gsap } from "gsap";
 
 console.log("Script loaded!");
 
-// const lerp = (x, y, a) => x * (1 - a) + y * a;
-
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const pagePaths = ["/", "/games/", "/software/", "/contact/"];
 const pages = {
   "/": document.querySelector('[data-page="home"]'),
@@ -23,6 +22,27 @@ current_page.style.display = "block";
 
 for (const link of document.querySelectorAll("._text")) {
   link.addEventListener("click", updatePage, false);
+  link.onmouseover = (event) => {
+    let iterations = 0;
+
+    const interval = setInterval(() => {
+      event.target.innerText = event.target.innerText
+        .split("")
+        .map((letter, index) => {
+          if (index < iterations) {
+            return event.target.dataset.value[index];
+          }
+          return letters[Math.floor(Math.random() * 26)];
+        })
+        .join("");
+
+      if (iterations >= event.target.dataset.value.length) {
+        clearInterval(interval);
+      }
+
+      iterations += 1 / 2;
+    }, 30);
+  };
 }
 window.addEventListener("popstate", () => {
   updateView();
