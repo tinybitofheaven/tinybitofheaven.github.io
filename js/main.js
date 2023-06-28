@@ -15,9 +15,7 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 
 console.log("Script loaded!");
-
-// const lerp = (x, y, a) => x * (1 - a) + y * a;
-
+var letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var pagePaths = ["/", "/games/", "/software/", "/contact/"];
 var pages = {
   "/": document.querySelector('[data-page="home"]'),
@@ -38,6 +36,21 @@ try {
   for (_iterator.s(); !(_step = _iterator.n()).done;) {
     var link = _step.value;
     link.addEventListener("click", updatePage, false);
+    link.onmouseover = function (event) {
+      var iterations = 0;
+      var interval = setInterval(function () {
+        event.target.innerText = event.target.innerText.split("").map(function (letter, index) {
+          if (index < iterations) {
+            return event.target.dataset.value[index];
+          }
+          return letters[Math.floor(Math.random() * 26)];
+        }).join("");
+        if (iterations >= event.target.dataset.value.length) {
+          clearInterval(interval);
+        }
+        iterations += 1 / 2;
+      }, 30);
+    };
   }
 } catch (err) {
   _iterator.e(err);
