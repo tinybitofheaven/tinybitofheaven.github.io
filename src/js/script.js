@@ -22,28 +22,39 @@ current_page.style.display = "block";
 
 for (const link of document.querySelectorAll("._text")) {
   link.addEventListener("click", updatePage, false);
-  link.onmouseover = (event) => {
-    let iterations = 0;
-
-    const interval = setInterval(() => {
-      event.target.innerText = event.target.innerText
-        .split("")
-        .map((letter, index) => {
-          if (index < iterations) {
-            return event.target.dataset.value[index];
-          }
-          return letters[Math.floor(Math.random() * 26)];
-        })
-        .join("");
-
-      if (iterations >= event.target.dataset.value.length) {
-        clearInterval(interval);
-      }
-
-      iterations += 1 / 2;
-    }, 30);
-  };
+  link.addEventListener("mouseover", letterScramble, false);
 }
+
+for (const link of document.querySelectorAll("._link")) {
+  link.addEventListener("mouseover", letterScramble, false);
+}
+
+document
+  .querySelector(".siteHeader_title")
+  .addEventListener("mouseover", letterScramble, false);
+
+function letterScramble(event) {
+  let iterations = 0;
+
+  const interval = setInterval(() => {
+    event.target.innerText = event.target.innerText
+      .split("")
+      .map((letter, index) => {
+        if (index < iterations) {
+          return event.target.dataset.value[index];
+        }
+        return letters[Math.floor(Math.random() * 26)];
+      })
+      .join("");
+
+    if (iterations >= event.target.dataset.value.length) {
+      clearInterval(interval);
+    }
+
+    iterations += 1 / 2;
+  }, 30);
+}
+
 window.addEventListener("popstate", () => {
   updateView();
 });
@@ -93,28 +104,29 @@ function showPage(page) {
     );
 }
 
-// function fadeout(element) {
-//   var op = 1; // initial opacity
-//   var timer = setInterval(function () {
-//     if (op <= 0.1) {
-//       clearInterval(timer);
-//       element.style.display = "none";
-//     }
-//     element.style.opacity = op;
-//     element.style.filter = "alpha(opacity=" + op * 100 + ")";
-//     op -= op * 0.1;
-//   }, 50);
-// }
+var container = document.querySelector(".screen");
+var image = document.querySelector(".bg-img");
+var rect = container.getBoundingClientRect();
+var mouse = { x: 0, y: 0, moved: false };
 
-// function fadein(element) {
-//   var op = 0.1; // initial opacity
-//   element.style.display = "block";
-//   var timer = setInterval(function () {
-//     if (op >= 1) {
-//       clearInterval(timer);
-//     }
-//     element.style.opacity = op;
-//     element.style.filter = "alpha(opacity=" + op * 100 + ")";
-//     op += op * 0.1;
-//   }, 10);
-// }
+document.onmousemove = (e) => {
+  mouse.moved = true;
+  mouse.x = e.clientX - rect.left;
+  mouse.y = e.clientY - rect.top;
+};
+
+// Ticker event will be called on every frame
+gsap.ticker.add(function () {
+  if (mouse.moved) {
+    parallaxIt(image, -30);
+  }
+  mouse.moved = false;
+});
+
+function parallaxIt(target, movement) {
+  gsap.to(target, {
+    x: ((mouse.x - rect.width / 2) / rect.width) * movement,
+    y: ((mouse.y - rect.height / 2) / rect.height) * movement,
+    duration: 0.5,
+  });
+}

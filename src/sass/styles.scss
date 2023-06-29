@@ -1,19 +1,25 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu|Raleway|Roboto+Mono:wght@300&display=swap');
 $color_1: inherit;
 $color_2: #fff;
-$font-family_1: "Ubuntu", Arial;
+$ubuntu: 'Ubuntu';
+$raleway: 'Raleway';
+$roboto-mono: 'Roboto Mono', monospace;
+$font-family_1: $raleway;
+$font-family_2: $ubuntu;
+$font-family_3: $roboto-mono;
 $background-color_1: var(--c-bg);
 
-@font-face {
-	font-family: "Ubuntu";
-	font-weight: 200;
-	src: url('../fonts/Ubuntu-Bold.ttf') format('ttf'),
-		url('../fonts/Ubuntu-Bold.woff') format('woff');
-}
-@font-face {
-	font-family: "Raleway";
-	font-weight: 400;
-	src: url("../fonts/Raleway-VariableFont_wght.ttf") format("ttf");
-}
+// @font-face {
+// 	font-family: "Ubuntu";
+// 	font-weight: 200;
+// 	src: url('../fonts/Ubuntu-Bold.ttf') format('ttf'),
+// 		url('../fonts/Ubuntu-Bold.woff') format('woff');
+// }
+// @font-face {
+// 	font-family: "Raleway";
+// 	font-weight: 400;
+// 	src: url("../fonts/Raleway-VariableFont_wght.ttf") format("ttf");
+// }
 * {
 	box-sizing: inherit;
 	-webkit-user-select: inherit;
@@ -168,11 +174,13 @@ body {
 	}
 }
 
-.screen-bg > img {
-	opacity: 50%;
-	height: 100%;
-	width: 100%;
-	object-fit: cover;
+.bg-img > img {
+	height: 1200px;
+  	width: auto;
+	// width: 120%;
+  	// height: auto;
+	min-width: 120%;
+    min-height: 120%;
 }
 
 .screen > .screen-bg {
@@ -182,10 +190,14 @@ body {
 	z-index: 1;
 	left: 0px;
 	top: 0px;
-	background-size: 100%;
-	background-position: 0% 0%;
+	// background-size: 100%;
+	// background-position: 0% 0%;
 	filter: sepia(100%) hue-rotate(130deg);
 	opacity: 0.6;
+	display: flex;
+	justify-content: center;
+    align-items: center;
+    overflow: hidden;
 	// animation: pan-image 15s linear infinite;
 }
 
@@ -208,12 +220,13 @@ body {
 	z-index: 10;
 	left: calc(var(--pad) * 2);
 	top: calc(var(--pad) * 2);
+	font-family: $font-family_1;
 	// mix-blend-mode: difference;
 }
 .siteHeader_title {
 	margin: -0.1em 0 0 -0.04em;
 	font-weight: 200;
-	font-size: 30px;
+	font-size: 45px;
 }
 .siteHeader_label {
 	margin-top: 5px;
@@ -221,6 +234,7 @@ body {
 }
 .siteHeader_nav {
 	margin-top: 50px;
+	font-family: $font-family_2;
 	ol {
 		display: flex;
 		flex-direction: column;
@@ -239,6 +253,7 @@ body {
 				transition-timing-function: cubic-bezier(0.1, 0.4, 0.2, 1);
 			}
 			._text {
+				font-family: $font-family_3;
 				position: relative;
 				transition-property: opacity;
 				transition-duration: 0.4s;
@@ -264,6 +279,7 @@ body {
 	right: calc(var(--pad));
 	bottom: calc(var(--pad));
 	white-space: nowrap;
+	font-family: $font-family_2;
 }
 .page_text {
 	text-align: right;

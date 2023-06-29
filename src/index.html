@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>My Website</title>
+    <title>Allyson Chan</title>
     <link rel="stylesheet" href="./css/main.css" />
     <!-- <link rel="icon" href="./favicon.ico" type="image/x-icon" /> -->
     <!-- Background Image from: https://unsplash.com/@heytowner -->
@@ -14,11 +14,13 @@
       <div class="Content">
         <div class="screen">
           <div class="screen-bg">
-            <img src="./images/bg.jpg" />
+            <div class="bg-img"><img src="./images/bg.jpg" /></div>
           </div>
           <div class="screen-overlay">
             <header class="siteHeader" id="SiteHeader">
-              <h1 class="siteHeader_title">ALLYSON CHAN</h1>
+              <h1 class="siteHeader_title" data-value="ALLYSON CHAN">
+                ALLYSON CHAN
+              </h1>
               <p class="siteHeader_label">DEVELOPER &amp; GAME DESIGNER</p>
               <nav class="siteHeader_nav" x-data="">
                 <ol>
@@ -50,8 +52,10 @@
               <section class="page" data-page="home">
                 <div class="page_content">
                   <p class="page_text">
-                    <span>Lorem ipsum</span><span>dolor sit amet,</span>
-                    <span>Consectetur</span><span>adipiscing elit.</span>
+                    <span>Currently studying</span
+                    ><span>at New York University,</span>
+                    <span>I am a game designer</span
+                    ><span>and software developer.</span>
                     <span>Lorem ipsum</span><span>dolor sit amet,</span>
                     <span>Consectetur</span><span>adipiscing elit.</span>
                     <span>Lorem ipsum</span><span>dolor sit amet,</span>
@@ -93,13 +97,31 @@
       </div>
       <div class="icon_links">
         <div class="_icon">
-          <a class="_link" href="mailto: allysonn.chann@gmail.com">Email</a>
+          <a
+            class="_link"
+            href="mailto: allysonn.chann@gmail.com"
+            data-value="EMAIL"
+            >EMAIL</a
+          >
+          <!-- &emsp; -->
         </div>
         <div class="_icon">
-          <a class="_link" href="https://tinybitofheaven.itch.io">itch.io</a>
+          <a
+            class="_link"
+            href="https://tinybitofheaven.itch.io"
+            data-value="ITCH.IO"
+            >ITCH.IO</a
+          >
+          <!-- &emsp; -->
         </div>
         <div class="_icon">
-          <a class="_link" href="https://github.com/tinybitofheaven">Github</a>
+          <a
+            class="_link"
+            href="https://github.com/tinybitofheaven"
+            data-value="GITHUB"
+            >GITHUB</a
+          >
+          <!-- &emsp; -->
         </div>
       </div>
     </div>
